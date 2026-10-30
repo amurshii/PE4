@@ -1,0 +1,155 @@
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Inter", "Segoe UI", Arial, sans-serif;
+  color: #f1f5f9;
+  background:
+    radial-gradient(circle at 10% 10%, #3f3f9e 0%, transparent 45%),
+    radial-gradient(circle at 95% 95%, #0b5b7e 0%, transparent 50%),
+    #121629;
+}
+
+.card {
+  width: 100%;
+  max-width: 440px;
+  margin: 24px;
+  padding: 34px 30px 32px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 24px;
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45);
+}
+
+h1 {
+  margin: 0 0 8px;
+  text-align: center;
+  font-size: 28px;
+  font-weight: 800;
+  color: #e2e8f8;
+}
+
+.subtitle {
+  margin: 0 0 28px;
+  text-align: center;
+  font-size: 15px;
+  color: #9aa6c4;
+}
+
+.field { position: relative; margin-bottom: 6px; }
+
+.field input[type="text"],
+.field input[type="email"],
+.field input[type="password"] {
+  width: 100%;
+  height: 56px;
+  padding: 22px 48px 6px 16px;
+  font-family: inherit;
+  font-size: 17px;
+  color: #f1f5f9;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 14px;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s, background-color 0.2s;
+}
+
+/* Плаваючий підпис */
+.field > label:not(.eye) {
+  position: absolute;
+  left: 16px;
+  top: 18px;
+  font-size: 16px;
+  color: #9aa6c4;
+  pointer-events: none;
+  transition: all 0.18s ease;
+}
+
+.field input:focus + label:not(.eye),
+.field input:not(:placeholder-shown) + label:not(.eye) {
+  top: 8px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #22d3ee;
+}
+
+.field input:hover { border-color: rgba(34, 211, 238, 0.6); }
+
+.field input:focus {
+  border-color: #22d3ee;
+  box-shadow: 0 0 0 3px rgba(34, 211, 238, 0.22), 0 0 18px rgba(34, 211, 238, 0.25);
+  background: rgba(255, 255, 255, 0.14);
+}
+
+/* Індикація валідності */
+.field input.valid   { border-color: #34d399 !important; background-color: rgba(52, 211, 153, 0.12) !important; }
+.field input.invalid { border-color: #f87171 !important; background-color: rgba(248, 113, 113, 0.14) !important; }
+
+.error {
+  min-height: 22px;
+  margin: 4px 4px 6px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #fca5a5;
+}
+
+/* Іконка ока (чекбокс) */
+.visually-hidden {
+  position: absolute;
+  opacity: 0;
+  width: 1px;
+  height: 1px;
+  pointer-events: none;
+}
+
+.eye {
+  position: absolute;
+  right: 14px;
+  top: 17px;
+  display: flex;
+  color: #cbd5e1;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+.eye:hover { color: #22d3ee; }
+.eye .slash { opacity: 0; }
+#checkbox:checked + .eye .slash { opacity: 1; }
+#checkbox:checked + .eye { color: #22d3ee; }
+#checkbox:focus-visible + .eye { outline: 2px solid #22d3ee; border-radius: 6px; }
+
+button {
+  display: block;
+  width: 100%;
+  margin-top: 14px;
+  padding: 16px 20px;
+  font-family: inherit;
+  font-size: 17px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #fff;
+  background: linear-gradient(135deg, #6366f1, #06b6d4);
+  border: none;
+  border-radius: 14px;
+  cursor: pointer;
+  box-shadow: 0 10px 24px rgba(6, 182, 212, 0.3);
+  transition: all 0.3s ease;
+}
+
+button:hover  { filter: brightness(1.1); box-shadow: 0 12px 28px rgba(6, 182, 212, 0.4); }
+button:active { transform: scale(0.98); }
+
+button:disabled {
+  background: rgba(255, 255, 255, 0.14);
+  color: rgba(255, 255, 255, 0.45);
+  cursor: not-allowed;
+  box-shadow: none;
+  filter: none;
+  transform: none;
+}
